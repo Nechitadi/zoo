@@ -21,6 +21,8 @@
   	<link rel="stylesheet" href="css/zerogrid.css">
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/lightbox.css">
+	<link rel="stylesheet" href="css/general.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
 	<!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -44,12 +46,12 @@
 	
 </head>
 
-<body class="contact-page">
+<body class="home-page">
 	<div class="wrap-body">
 		<div class="header">
 			<div id='cssmenu' >
 				<ul>
-				   <li><a href='index.html'><span>Nature Park Zoo</span></a></li>
+				   <li class="active"><a href='index.html'><span>Nature Park Zoo</span></a></li>
 				   <li class=' has-sub'><a href='#'><span>Category</span></a>
 					  <ul>
 						 <li class='has-sub'><a href='#'><span>Item 1</span></a>
@@ -67,77 +69,61 @@
 					  </ul>
 				   </li>
 				   <li><a href='archive.html'><span>Archive</span></a></li>
-				   <li><a href='single.html'><span>About</span></a></li>
-				   <li class='last active'><a href='contact.html'><span>Contact</span></a></li>
+					 <li><a href='single.html'><span>About</span></a></li>
+					 <li><a href='contact.html'><span>Contact</span></a></li>
+					 <li class='last'><a href='login.html'><span>Login</span></a></li>	
 				</ul>
 			</div>
-		</div>
-
 		<!--////////////////////////////////////Container-->
-		<section id="container">
-			<div class="wrap-container">
-				<div class="crumbs">
-					<ul>
-						<li><a href="index.html">Acasă</a></li>
-						<li><a href="contact.html">Contact</a></li>
-					</ul>
-				</div>
-				<div class="zerogrid">
-					<div class="row">
-						<h1 class="t-center" style="margin: 40px 0;color: #212121;letter-spacing: 2px;font-weight: 500;">Contactează-ne</h1>
-						<div class="col-full">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.289259162295!2d-120.7989351!3d37.5246781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8091042b3386acd7%3A0x3b4a4cedc60363dd!2sMain+St%2C+Denair%2C+CA+95316%2C+Hoa+K%E1%BB%B3!5e0!3m2!1svi!2s!4v1434016649434" width="100%" height="450" frameborder="0" style="border:0"></iframe>
-						</div>
-						<div class="col-1-3">
-							<div class="wrap-col">
-								<h3 style="margin: 20px 0">Informații de contact</h3>
-								<p>Str. Eugen Ionesco, Nr. 11, Cluj-Napoca, Jud. Cluj, România</p>
-								   <p>0740 079 070 <br>
-									adrian.nechita11@gmail.com</p>
-								<p>nechitadi.github.io</p>
-							</div>
-						</div>
-						<div class="col-2-3">
-							<div class="wrap-col">
-								<div class="contact">
-									<h3 style="margin: 20px 0 20px 30px">Formular de contact</h3>
-									<div id="contact_form">
-										<form name="form1" id="ff" method="post" action="contact.php">
-											<label class="row">
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="text" name="name" id="name" placeholder="Nume" required="required" />
-													</div>
-												</div>
-												<div class="col-1-2">
-													<div class="wrap-col">
-														<input type="email" name="email" id="email" placeholder="Email" required="required" />
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="col-full">
-													<div class="wrap-col">
-													<input type="text" name="subject" id="subject" placeholder="Subiect" required="required" />
-													</div>
-												</div>
-											</label>
-											<label class="row">
-												<div class="wrap-col">
-													<textarea name="message" id="message" class="form-control" rows="4" cols="25" required="required"
-													placeholder="Mesaj"></textarea>
-												</div>
-											</label>
-											<center><input class="sendButton" type="submit" name="submitcontact" value="Trimite"></center>
-										</form>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		<main>
+				<?php
+					include("conn.php");
+			 
+			 function testare($data) {
+					$data = trim($data); 
+					$data = stripslashes($data); 
+					$data = htmlspecialchars($data); 
+					return $data; 
+			 }
+			 
+			 class Admin {
+					public $id_admin;
+					public $nume;
+					public $parola;
+			 }
+			 
+			 $n = testare($_REQUEST["numeletau"]); 
+			 $p = testare($_REQUEST["parolata"]);
+			 
+			 if(isset($cnx)) {
+			 
+					$cda= "SELECT * from admin";
+					$stmt = $cnx->prepare($cda);
+					$stmt->execute();
+					$gasit = false;
+			 
+					while ($utilizator = $stmt->fetchObject('Admin'))
+					 {
+						 if($utilizator->nume == $n && $utilizator->parola == $p) 
+						 {
+								echo '<h1 class="italic centrat color-yellow alert-success"><span class="litera italic"> S</span>unteti autorizat!</h1><br />';
+					 echo '<form class="centrat" method="post" action="adaugare.php">';
+								echo '<input class="btn btn-dark" type="submit" name="submit1" value="Adaugare">';
+								echo '</form></center>';
+								$gasit = true;
+								break;
+						 }
+					}
+					if(!$gasit) 
+					{
+						 echo '<h1 class="italic centrat alert-danger">Nume sau parolă incorecte</h1><br />';
+						 echo '<form class="centrat"><input class="btn btn-dark" type="button" value="Mai incearca" onClick="location.href=\'login.html\'"></form></center>';
+					}
+					$cnx = null;
+			 }
+			 
+			 ?>
+			 </main>
 		<!--////////////////////////////////////Footer-->
 		<footer>
 			<div class="zerogrid wrap-footer">
@@ -186,4 +172,3 @@
 	</div>
 </body>
 </html>
-
