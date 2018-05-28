@@ -74,34 +74,85 @@
 				</ul>
 			</div>
 		<!--////////////////////////////////////Container-->
-		<main>
-				<h1 class="italic centrat"><span class="litera italic">A</span>utentificare</h1><br />
-					<div class="login-container">
-						<div class="form-box">
-								<form name="formular" method="post" action="verificare.php" class="centrat">
-										<table class="login centrat">
-										<tr>
-												<td class="label">Nume</td>
-												<td><input class="field" type="text" name="numeletau" /></td>
-										</tr>
-						
-										<tr>
-												<td class="label">Parolă</td>
-												<td><input class="field" type="password" name="parolata" /></td>
-										</tr>
-						
-										<tr>
-												<td colspan="2" class="centrat"><input class="btn btn-dark" type="submit" name="trimite" value="OK" /></td>
-										</tr>
-										</table>
-								</form>
-						</div>
-					</div>
-			</div>
-		</main>
+		<main class="adaugare-container">
+      <h1 class="italic centrat"><span class="litera italic">A</span>daugare</h1><br />
+        <form name="formular" enctype="multipart/form-data" method="post" action="inserare.php" class="centrat">
+          <table class="login centrat">
+            <tr>
+              <td class="label">Categoria:</td>
+              <td> 
+                <select name="combo" class="field">
+                    <option selected value="initial">(Alege categoria)</option>
+                    <option value="buchete">Buchete</option>
+                    <option value="aranjamente">Aranjamente</option>
+                    <option value="bonsai">Bonsai</option>
+                    <option value="promotii">Promotii</option>
+                    <option value="dulciuri">Dulciuri</option>
+                    <option value="bauturi">Bauturi</option>
+                    <option value="jucarii">Jucarii</option>
+                </select>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="label">Selectati imaginea:</td>
+              <td class="field"><input type="file" name="fisier" class="btn btn-default" /></td>
+            </tr>
+
+            <tr>
+              <td></td>
+              <td>
+                <input type="submit" name="Submit" value="Adauga"  class="btn btn-dark">
+                <input type="reset" name="Reset" value="Sterge" class="btn btn-dark">
+              </td>
+            </tr>
+        </table>
+      </form>
+    </main>
 		<!--////////////////////////////////////Footer-->
 		<footer>
-			<div class="zerogrid wrap-footer"></div>
+			<div class="zerogrid wrap-footer">
+				<!-- <div class="row">
+					<div class="col-1-3 col-footer-1">
+						<div class="wrap-col">
+							<h3 class="widget-title">Despre noi</h3>
+							<p>O oază de linişte, ideală pentru odihnă, recreere şi refacere vă aşteaptă la Grădina Zoologică Nature Park, unde doar ambientul special al vietăţiilor noastre extrem de primitoare, căldura şi profesionalismul personalului fac diferenţa şi rămân mărturie.</p>
+						</div>
+					</div>
+					<div class="col-1-3 col-footer-2">
+						<div class="wrap-col">
+						</div>
+					</div>
+					<div class="col-1-3 col-footer-3">
+						<div class="wrap-col">
+							<h3 class="widget-title">Tag Cloud</h3>
+							<a href="#">animale</a>
+							<a href="#">urs</a>
+							<a href="#">leu</a>
+							<a href="#">vulpe</a>
+							<a href="#">strut</a>
+							<a href="#">crocodil</a>
+							<a href="#">girafa</a>
+							<a href="#">hipopotam</a>
+							<a href="#">sarpe</a>
+							<a href="#">maimuta</a>
+							<a href="#">koala</a>
+							<a href="#">tigru</a>
+							<a href="#">pantera</a>
+							<a href="#">salbaticie</a>
+							<a href="#">natura</a>
+							<a href="#">calatorie</a>
+							<a href="#">copaci</a>
+							<a href="#">zoo</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="copyright">
+				<div class="zerogrid wrapper">
+					Copyright @ Nature Prak Zoo - Designed by <a href="https://nechitadi.github.io/">Adrian Nechita</a>
+				</div>
+			</div> -->
 		</footer>
 	</div>
 </body>
