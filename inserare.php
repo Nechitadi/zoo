@@ -144,10 +144,10 @@
 				}
 				
 				echo "<p class=\"inserare centrat\">";
-				echo "<h1 class=\"italic centrat\"><span class=\"litera italic\">P</span>rodusul<br />s-a adaugat in baza de date</h1><br />";
-				echo "<form class=\"centrat\"><input type=button value=\"Alt produs\"
+				echo "<h1 class=\"italic centrat\"><span class=\"litera italic\">A</span>nimalul<br />a fost adăugat în baza de date</h1><br />";
+				echo "<form class=\"centrat\"><input type=button value=\"Adaugă altul\" class=\"btn btn-dark\"
 						onClick=\"location.href='adaugare.php'\">";
-				echo "<input type=button value=\"Home\" onClick=\"location.href='index.html'\"></form>";
+				echo "<input type=button value=\"Acasă\"  class=\"btn btn-dark\" onClick=\"location.href='index.html'\"></form>";
 				echo "</p><br /><br />";
 				echo "<p class=\"inserare centrat\">Numele vechi al fisierului: $numeimagine</p>";
 				echo "<p class=\"inserare centrat\">Numele vechi al fisierului mare:   $numeimaginemare</p>";
