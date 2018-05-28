@@ -20,8 +20,7 @@
   text-align: center; }
 
 .login-container {
-  height: 60vh;
-  background-color: red; }
+  height: 60vh; }
 
 .field {
   background-color: #f8f8f8;
@@ -42,3 +41,18 @@
 .adaugare-container select.field {
   width: 100%;
   margin-bottom: 1em; }
+
+.adaugare-container #imaginea-mare {
+  margin-top: 1em !important; }
+
+.adaugare-container textarea {
+  margin-top: 1em;
+  height: unset; }
+
+.adaugare-container input[type="text"] {
+  width: 100%; }
+
+.inserare {
+  font-weight: 500;
+  padding: 0.5em;
+  color: #fca01c; }

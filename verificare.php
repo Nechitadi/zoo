@@ -106,9 +106,9 @@
 					 {
 						 if($utilizator->nume == $n && $utilizator->parola == $p) 
 						 {
-								echo '<h1 class="italic centrat color-yellow alert-success"><span class="litera italic"> S</span>unteti autorizat!</h1><br />';
+								echo '<h1 class="italic centrat color-yellow alert-success"><span class="litera italic"> S</span>unteți autorizat!</h1><br /><h3 class="centrat">Puteți adăuga un animal</h3>';
 					 echo '<form class="centrat" method="post" action="adaugare.php">';
-								echo '<input class="btn btn-dark" type="submit" name="submit1" value="Adaugare">';
+								echo '<input class="btn btn-dark" type="submit" name="submit1" value="Adăugare">';
 								echo '</form></center>';
 								$gasit = true;
 								break;

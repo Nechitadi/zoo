@@ -75,7 +75,7 @@
 			</div>
 		<!--////////////////////////////////////Container-->
 		<main class="adaugare-container">
-      <h1 class="italic centrat"><span class="litera italic">A</span>daugare</h1><br />
+      <h1 class="italic centrat"><span class="litera italic">A</span>dăugare</h1><br />
         <form name="formular" enctype="multipart/form-data" method="post" action="inserare.php" class="centrat">
           <table class="login centrat">
             <tr>
@@ -83,21 +83,57 @@
               <td> 
                 <select name="combo" class="field">
                     <option selected value="initial">(Alege categoria)</option>
-                    <option value="buchete">Buchete</option>
-                    <option value="aranjamente">Aranjamente</option>
-                    <option value="bonsai">Bonsai</option>
-                    <option value="promotii">Promotii</option>
-                    <option value="dulciuri">Dulciuri</option>
-                    <option value="bauturi">Bauturi</option>
-                    <option value="jucarii">Jucarii</option>
-                </select>
+                    <?php
+                      include("conn.php");
+
+                      class Categorii {
+                        public $id_categ;
+                        public $categoria;
+                      }
+
+                      if(isset($cnx)) {
+                        $cda= "SELECT * FROM categorii";
+                        $stmt = $cnx->prepare($cda);
+                        $stmt->execute();
+                        while ($categ = $stmt->fetchObject('Categorii')) {
+                          echo '<option value="' . $categ->id_categ . '">' . $categ->categoria . '</option>\n';
+                        }
+                        $cnx = null;
+                      }
+                      ?>
+                      </select>
               </td>
             </tr>
 
             <tr>
-              <td class="label">Selectati imaginea:</td>
-              <td class="field"><input type="file" name="fisier" class="btn btn-default" /></td>
-            </tr>
+              <td class="label">Selectați imaginea:</td>
+              <td class="field file-field"><input type="file" name="fisier" class="btn btn-default" /></td>
+						</tr>
+						
+						<tr id="imaginea-mare">
+							<td class="label">Imaginea mare: </td>
+							<td class="field file-field"><input type="file" name="mare" class="btn btn-default"/></td>
+						</tr>
+
+						<tr>
+							<td class="label">Numele animalului: </td>
+							<td><input type="text" name="nume" class="field"/></td>
+						</tr>
+
+						<tr>
+							<td class="label">Descriere:</td>
+							<td><textarea name="descriere" rows="5"></textarea></td>
+						</tr>
+
+						<tr>
+							<td class="label">Raspandire:</td>
+							<td><textarea name="raspandire" rows="2"></textarea></td>
+						</tr>
+
+						<tr>
+							<td class="label">Alimentație:</td>
+							<td><textarea name="alimentatie" rows="2"></textarea></td>
+						</tr>
 
             <tr>
               <td></td>
