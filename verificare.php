@@ -106,8 +106,11 @@
 					 {
 						 if($utilizator->nume == $n && $utilizator->parola == $p) 
 						 {
-								echo '<h1 class="italic centrat color-yellow alert-success"><span class="litera italic"> S</span>unteți autorizat!</h1><br /><h3 class="centrat">Puteți adăuga un animal</h3>';
-					 echo '<form class="centrat" method="post" action="adaugare.php">';
+								session_start();
+								$_SESSION['user'] = $utilizator->nume;
+
+								echo '<h1 class="italic centrat color-yellow alert-success"><span class="litera italic"> S</span>unteți autorizat ca si ' . $_SESSION['user'] . '!</h1><br /><h3 class="centrat">Puteți adăuga un animal</h3>';
+					 			echo '<form class="centrat" method="post" action="adaugare.php">';
 								echo '<input class="btn btn-dark" type="submit" name="submit1" value="Adăugare">';
 								echo '</form></center>';
 								$gasit = true;
